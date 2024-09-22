@@ -37,7 +37,7 @@ header {
           text-align: left;
         }
       }
-      .links {
+      nav {
         display: flex;
         align-items: center;
         gap: 76px;
@@ -72,6 +72,195 @@ header {
   }
 }
 
+footer{
+  border-top: 1px solid #0000002B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+ .upper-part{
+  padding:48px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+   width:80%;
+   
+    .adress{
+      padding-right:136px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      gap:50px;
+      h3{
+        font-family: "Poppins";
+font-size: 24px;
+font-weight: 700;
+line-height: 36px;
+text-align: left;
+color: #000000;
+      }
+      p{
+        font-family: "Poppins";
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color: #9F9F9F;
+      }
+    }
+    .information{
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: row;
+      gap:144px;
+     #links{
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap:55px;
+      flex-direction: column;
+      h3{
+        font-family: "Poppins";
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+color:#9F9F9F;
+      }
+      ul{
+        display: flex;
+        flex-direction: column;
+        gap:45px;
+        li{
+          list-style-type: none;
+          a{
+            text-decoration: none;
+            font-family: "Poppins";
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+            color:#000000;
+
+          }
+        }
+      
+      }
+      
+     }
+     #help{
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap:55px;
+      flex-direction: column;
+      padding-right: 72px;
+      h3{
+        font-family: "Poppins";
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+color:#9F9F9F;
+      }
+      ul{
+        display: flex;
+        flex-direction: column;
+        gap:45px;
+        li{
+          list-style-type: none;
+          a{
+            text-decoration: none;
+            font-family: "Poppins";
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+            color:#000000;
+
+          }
+        }
+      
+      }
+      
+     }
+    }
+    .newsletter{
+      
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+    gap:60px;
+    h3{
+      font-family: "Poppins";
+font-size: 16px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+color:#9F9F9F;
+    }
+    form{
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap:11px;
+      input{
+        font-family:"Poppins";
+font-size: 14px;
+font-weight: 400;
+line-height: 21px;
+text-align: left;
+color:#9F9F9F;
+border:none;
+outline: none;
+border-bottom: 2px solid #000000;
+&:focus {
+  border-bottom: 1px solid #000000; /* Keep it black on focus */
+}
+      }
+      button{
+        font-family: "Poppins";
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+color:#000000;
+background: transparent;
+border: none;
+outline: none;
+border-bottom:2px solid #000000;
+&:hover{
+  border: none;
+outline: none;
+  border-bottom: 1px solid #000000;
+}
+      }
+    }
+    }
+ }
+ .bottom-part{
+  display: flex;
+  align-items:flex-start ;
+  justify-content: flex-start;
+  width:80%;
+  border-top: 1px solid #D9D9D9;
+  div{
+    padding:35px 0;
+    h4{
+      font-family: "Poppins";
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+text-align: left;
+color:#000000;
+    }
+  }
+ }
+}
+
+
 //Home-Page
 #home-page {
   display: flex;
@@ -104,7 +293,7 @@ header {
           letter-spacing: 3px;
           text-align: left;
           color: #333333;
-          margin-bottom: 4;
+          margin-bottom: 4px;
         }
         h2 {
           font-family: "Poppins";
@@ -152,7 +341,8 @@ header {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top: 59.47px;
+    padding: 59.47px 0 81px 0 ;
+  gap:32px;
     h2 {
       font-family: "Poppins";
       font-size: 40px;
@@ -161,13 +351,36 @@ header {
       text-align: center;
       padding-bottom: 32px;
     }
-
+    .show-more{
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:32px;
+        background-color: #FFFFFF;
+        border: 1px solid #B88E2F;
+        color:#B88E2F;
+        font-family: "Poppins";
+font-size: 16px;
+font-weight: 600;
+line-height: 24px;
+text-align: left;
+width: 245px;
+height: 48px;
+cursor: pointer;
+transition: all 0.3s linear;
+&:hover {
+  background-color: #6f5414;
+  color: #ffffff;
+}
+    }
     .p-box {
       display: flex;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
       justify-content: center;
-
+      flex-wrap: wrap;
+      gap:32px;
       .card {
         display: flex;
         flex-direction: column;
@@ -177,7 +390,7 @@ header {
         height: 446px;
         overflow: hidden;
         position: relative;
-       
+        
         .item {
           display: flex;
           flex-direction: column;
@@ -190,7 +403,8 @@ header {
             display: flex;
             flex-direction: column;
             padding: 16px 16px 30px 16px;
-
+            height: 99px;
+            
             h4 {
               font-family: "Poppins";
               font-size: 15px;
@@ -209,7 +423,7 @@ header {
             }
             p {
               font-family: "Poppins";
-              font-size: 15px;
+              font-size: 17px;
               font-weight: 600;
               line-height: 30px;
               text-align: left;
@@ -256,6 +470,8 @@ header {
                 flex-direction: row;
                 padding-top:24px;
               gap:20px;
+              cursor: pointer;
+              
                 .hover-icon{
                    display: flex;
                    align-items: center;
@@ -265,6 +481,10 @@ header {
                     font-weight: 600;
                     font-size: 16px;
                     line-height: 24px;
+                    transition: all 0.3s ease-in;
+                    &:hover{
+                      transform: scale(1.1);
+                    }
                 }
             }
           }
@@ -275,6 +495,131 @@ header {
            visibility: visible;
         }
 
+      }
+    }
+  }
+}
+
+/* Extra Small Devices (Mobile Portrait) - up to 480px */
+@media only screen and (max-width: 480px) {
+  header{
+    #box {
+      .logo-links {
+        .logo{
+          img{
+            display: none;
+          }
+          span{
+            font-size: 13px;
+          }
+        }
+        nav{
+          display: none;
+        }
+      }
+     #cart-icon{
+      span{
+        font-size: 20px;
+      }
+     }
+    }
+  }
+  footer{
+    .upper-part{
+     display: none;
+    }
+  }
+  #home-page{
+    .banner-1{
+      
+      background-position: center;
+
+      .discover{
+      display: none;
+      }
+    }
+
+  .our-products{
+    .p-box{
+      gap: 10%;
+      row-gap: 40px;
+    }
+  }
+}
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  header{
+    #box {
+      .logo-links {
+        gap:0;
+        width: 70%;
+      }
+     
+    }
+  }
+  footer{
+    .upper-part{
+      .newsletter{
+        display: none;
+      }
+    }
+  }
+  #home-page{
+      .banner-1{
+        .discover{
+          max-width:500px;
+          max-height: 400px;
+            .text-new{
+              padding:30px;
+              h6{
+                font-size: 13px;
+              }
+              h2{
+                font-size: 35px;
+                line-height: 50px;
+              }
+              p{
+                font-size: 15px;
+              }
+
+              button{
+                max-width: 190px;
+                padding:25px 40px
+              }
+            }
+        }
+      }
+
+    .our-products{
+      .p-box{
+        gap: 10%;
+        row-gap: 40px;
+      }
+    }
+  }
+}
+
+/* Large Devices (Laptops) - 1025px to 1200px */
+@media only screen and (min-width: 769px) and (max-width: 1300px) {
+  header{
+    #box {
+      .logo-links {
+        gap:0;
+        width: 70%;
+      }
+     
+    }
+  }
+
+  #home-page{
+    .our-products{
+      .p-box{
+      .card{
+       
+        &:nth-of-type(2){
+          display: none;
+         }
+      }
       }
     }
   }

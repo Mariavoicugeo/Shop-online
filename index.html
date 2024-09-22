@@ -32,20 +32,21 @@
     <header>
       <div id="box">
         <div class="logo-links">
+          
           <div class="logo">
             <img
               src="./photos/Imagine WhatsApp 2024-09-21 la 19.54.52_fafc8dc1.jpg"
             />
             <span>Timeless Treasures</span>
           </div>
-          <div class="links">
-            <a href="#">Home</a>
-            <a href="#">Shop</a>
-          </div>
+          <nav>
+            <a href="#" aria-label="Home">Home</a>
+            <a href="#" aria-label="Shop">Shop</a>
+          </nav>
         </div>
 
         <div id="cart-icon">
-          <span class="material-symbols-outlined"> shopping_cart </span>
+          <span class="material-symbols-outlined" aria-label="Cart"> shopping_cart </span>
         </div>
       </div>
     </header>
@@ -64,15 +65,15 @@
                 Explore exquisite designs to elevate your style. Our collection
                 features timeless pieces for every occasion.
               </p>
-              <button>Buy Now</button>
+              <button aria-label="Buy Now More Jewelry">Buy Now</button>
             </div>
           </div>
         </article>
         <article class="our-products">
           <h2>Our Products</h2>
 
-          <div class="p-box">
-            <div class="card" id="1">
+          <div class="p-box" id="first-box">
+           <!-- <div class="card" id="1">
               <div class="item">
                 <img src="./photos/free-photo-of-photographing-jewelry-so-hard-but-so-rewarding.jpeg" alt="" />
                 <div class="info">
@@ -91,13 +92,79 @@
                 </div>
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
+          <div class="p-box" id="second-box">
+            <!-- <div class="card" id="1">
+               <div class="item">
+                 <img src="./photos/free-photo-of-photographing-jewelry-so-hard-but-so-rewarding.jpeg" alt="" />
+                 <div class="info">
+                     <h4>Pierced Owl Rose Gold Plated Stainless Steel Double</h4>
+                     <h6>lorem ipsum </h6>
+                     <p>Rom 100000</p>
+                 </div>
+               </div>
+               <div class="hover">
+                 <div class="arrage-buttons">
+                     <button>Add to cart</button>
+                 <div class="links-icons">
+                   <div class="hover-icon"><i class="fa-solid fa-share-nodes"></i> Share</div>
+                   <div class="hover-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i>Compare</div>
+                   <div class="hover-icon"><i class="fa-regular fa-heart"></i>Like</div>
+                 </div>
+                 </div>
+               </div>
+             </div>-->
+           </div>
+           <button class="show-more" aria-label="Show More Products">Show More</button>
         </article>
       </section>
     </main>
 
-    <footer></footer>
+    <footer>
+      <section class="upper-part">
+        <section class="adress">
+        <h3>Timeless Treasures.</h3>
+        <p>400 University Drive Suite 200 Coral Gables,<br/>
+          FL 33134 USA</p>
+      </section>
+      <section class="information">
+        <div id="links">
+          <h3>Links</h3>
+          <ul>
+            <li><a href=#>Home</a></li>
+            <li><a href=#>Shop</a></li>
+            <li><a href=#>About</a></li>
+            <li><a href=#>Contact</a></li>
+          </ul>
+        </div>
+        <div id="help">
+          <h3>Help</h3>
+          <ul>
+            
+            <li><a href=#>Payment Options</a></li>
+            <li><a href=#>Returns</a></li>
+            <li><a href=#>Privacy Policies</a></li>
+            
+          </ul>
+        </div>
+        
+      </section>
+      <section class="newsletter">
+          <h3>Newsletter</h3>
+          <form >
+            <input type="email" id="email" name="email" placeholder="Enter Your Email Address">
+            <button type="submit">SUBSCRIBE</button>
+        </form>
+       
+      </section>
+    </section>
+    <section class="bottom-part">
+      <div>
+        <h4>2023 Timeless Treasures. All rights reverved</h4>
+      </div>
+    </section>
+    </footer>
 
     <script src="./index.js"></script>
   </body>

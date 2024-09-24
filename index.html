@@ -38,9 +38,45 @@
       </div>
 
       <div id="cart-icon">
-        <span class="material-symbols-outlined" aria-label="Cart"> shopping_cart </span>
+        <span class="material-symbols-outlined " id="cart-icon-btn" aria-label="Cart"> shopping_cart </span>
+      </div>
+      <div id="cart-menu">
+        <div class="h1-close-icon">
+          <h1>Shopping Cart</h1>
+          <i class="fa-solid fa-xmark close"></i>
+        </div>
+
+        <div class="cart-list">
+         <!--   <div class="product-added">
+              <div class="item-added-photo">
+                <img src="./photos/cercei.jpeg"  alt="">
+  
+              </div>
+              <div class="detalii-add-to">
+                <h6>Title</h6>
+                <div class="price-total-per-product">
+                  <span class="quantity-added">1</span>
+                  <span class="ori"> X </span>
+                  <span class="total-price-one-p">price</span>
+                </div>
+              </div>
+              <div class="delete-product"><i class="fa-solid fa-circle-xmark"></i></div>
+            </div>-->
+            
+           </div>
+           <div class="subtotal">
+            <h4>Subtotal</h4>
+            <p class="subtotal-price">0909ad9da</p>
+           </div>
+
+           <div class="checkout">
+            <button class="cart-btn">Cart</button>
+            <button class="checkout-btn">Checkout</button>
+            <button>Comparison</button>
+           </div>
       </div>
     </div>
+   
   </header>
   <main>
     <!--HOME PAGE-->
@@ -200,14 +236,14 @@
             <div class="btns-cart">
               <div class="quantity-selector">
              
-                  <button class="qty-btn">-</button>
-                  <span>1</span>
-                  <button class="qty-btn">+</button>
+                  <button class="qty-btn decrese">-</button>
+                  <span class="quantityDispaly">1</span>
+                  <button class="qty-btn increase">+</button>
                
               </div>
 
              
-                <button class="add-to-cart style" >Add To Cart</button>
+                <button class="add-to-cart style" data-id="${product.id}" >Add To Cart</button>
               
 
             </div>

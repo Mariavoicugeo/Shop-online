@@ -19,32 +19,53 @@ const qtyBtn=document.querySelector(".qty-btn");
 const quantityDsiplay=document.querySelector(".quantityDispaly");
 const increase=document.querySelector('.increase');
 const decrese=document.querySelector('.decrese');
-let selectedQuantity = 1;
-cartbtn.addEventListener("click", ()=>{
-    cartMenu.classList.add("open");
-   
-    const overlay = document.createElement('div');
-    overlay.id = 'overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = '#00000033'; // Semi-transparent black
-    overlay.style.zIndex = '2'; // Below the cart menu but above the rest of the content
+const checkoutBtn=document.querySelector(".checkout-btn");
+const cartCheckoutPage=document.getElementById("cart-checkout");
 
-   
-    document.body.appendChild(overlay);
+let selectedQuantity = 1;
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCart(); 
+
     
+    checkoutBtn.addEventListener('click', () => {
+        homePage.style.display="none";
+        backShop.style.display = "none";
+        shopPage.style.display = "none";
+        singleProductPage.style.display = "none";
+        cartCheckoutPage.style.display = "flex";
+        cartMenu.classList.remove("open");
+        
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
+
+    cartbtn.addEventListener("click", () => {
+        cartMenu.classList.add("open");
+        const overlay = document.createElement('div');
+        overlay.id = 'overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = '#00000033'; 
+        overlay.style.zIndex = '2';
+        document.body.appendChild(overlay);
+    });
+    
+    closeBtn.addEventListener("click", () => {
+        cartMenu.classList.remove("open");
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
 });
-    
-closeBtn.addEventListener("click",()=>{
-    cartMenu.classList.remove("open");
-    const overlay = document.getElementById('overlay');
-    if (overlay) {
-        document.body.removeChild(overlay); // Remove overlay from the DOM
-    }
-})
+
 showMore.addEventListener("click", () => {
    
     shopPage.style.display = "flex";
@@ -157,6 +178,16 @@ const updateQuantityDisplay = () => {
 
 updateQuantityDisplay();
 
+const initializeCart = () => {
+    const cartSalvat = JSON.parse(localStorage.getItem('cart'));
+    cartProduse = cartSalvat ? cartSalvat : []; 
+    renderCart(); 
+    renderCartCheckout(); 
+};
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCart(); 
+});
+
 const renderCart = () => {
     const cartItemsContainer = document.querySelector('.cart-list'); 
     cartItemsContainer.innerHTML = ''; 
@@ -191,12 +222,41 @@ const renderCart = () => {
             removeFromCart(productId); 
         });
     });
+    
    
 };
+
+const renderCartCheckout = () => {
+    const cartItemsContainerCheckout = document.querySelector('.cart-list-check'); 
+    cartItemsContainerCheckout.innerHTML = ""; 
+    cartProduse.forEach(item => {
+        const productCartCheckout = document.createElement("div");
+        productCartCheckout.classList.add("cart-display");
+        productCartCheckout.dataset.id=item.id;
+
+        productCartCheckout.innerHTML = `
+            <div class="name-quantity">
+              <h4>${item.title}</h4>
+              <span>X</span>
+              <p>${item.quantity}</p>
+            </div>
+            <span class="price">${(item.price * item.quantity).toFixed(2)}$</span> `;
+
+        cartItemsContainerCheckout.appendChild(productCartCheckout);
+       
+    });
+    const totalAmount = calculateTotal(); 
+    const subtotalDisplay = document.querySelectorAll('.subtotal-js'); 
+        subtotalDisplay.forEach(Element=>{
+            Element.textContent = `$${totalAmount}`; 
+        })
+};
+
 const removeFromCart = (productId) => {
     cartProduse = cartProduse.filter(item => item.id !== productId);
     localStorage.setItem('cart', JSON.stringify(cartProduse));
     renderCart();
+    renderCartCheckout()
     
 };
 
@@ -215,7 +275,7 @@ function addToCart(produs) {
     cartProduse.length = 0; 
     cartProduse.push(...cartDinLocalStorage); 
     renderCart();
-  
+    renderCartCheckout();
   
   }
 
@@ -229,6 +289,105 @@ function addToCart(produs) {
     return total.toFixed(2);
 };
 
+//AICI POSTAREA COMENZII
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const submitOrderBtn = document.querySelector(".sumbitorderbtn");
+    submitOrderBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        submitOrder();
+    });
+});
+
+
+function submitOrder() {
+
+    const formData = {
+        firstName: document.querySelector('.form-costumer #firstName').value,
+        lastName: document.querySelector('.form-costumer #lastName').value,
+        address: document.querySelector('.form-costumer #address').value,
+        town: document.querySelector('.form-costumer #town').value,
+        paymentMethod: document.querySelector('input[name="Cash On Delivery"]:checked') ? "Cash On Delivery" : "Other"
+    };
+
+  
+    const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+
+ 
+    const order = {
+        billingDetails: formData,
+        products: cartData.map(product => ({
+            name: product.name,          
+            quantity: product.quantity,   
+            price: product.price         
+        })),
+        totalAmount: calculateTotal2(cartData) 
+    };
+
+    console.log("Order Data:", order);
+
+   
+    fetch('http://localhost:8000/index.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Order successful:', data);
+        
+        localStorage.removeItem('cart');
+        clearCart();
+    })
+    .catch((error) => {
+        console.error('There was a problem with the fetch operation:', error);
+        alert('There was an issue placing your order. Please try again.');
+    });
+}
+
+
+function calculateTotal2(cartData) {
+    return cartData.reduce((total, product) => total + (product.price * product.quantity), 0);
+}
+
+function clearCart() {
+  
+    const cartDisplay = document.querySelector('.cart-list-check');
+    while (cartDisplay.firstChild) {
+        cartDisplay.removeChild(cartDisplay.firstChild);
+    }
+
+    document.querySelector('.form-costumer #firstName').value = '';
+    document.querySelector('.form-costumer #lastName').value = '';
+    document.querySelector('.form-costumer #address').value = '';
+    document.querySelector('.form-costumer #town').value = '';
+
+  
+    localStorage.removeItem('cart');
+
+    const subtotalDisplay = document.querySelectorAll('.subtotal-js'); 
+    subtotalDisplay.forEach(Element => {
+        Element.textContent = `$0.00`; // Set to zero after clearing the cart
+    });
+}
+
+
+function calculateTotal2(cartData) {
+    return cartData.reduce((total, product) => total + (product.price * product.quantity), 0);
+}
+
+
+document.querySelector('.sumbitorderbtn').addEventListener('click', (event) => {
+    event.preventDefault(); 
+    submitOrder(); 
+});
 
 
 
@@ -332,16 +491,15 @@ const showProductDetails = (product) => {
     
     const addToCartButton = document.querySelector("#single-product .add-to-cart");
 
-    // Remove any previously attached event listeners to avoid duplication
+    
     const newAddToCartButton = addToCartButton.cloneNode(true);
     addToCartButton.parentNode.replaceChild(newAddToCartButton, addToCartButton);
 
     newAddToCartButton.addEventListener("click", () => {
-        addToCart(product); // Add product with the current quantity
+        addToCart(product); 
     });
 
-    console.log("Product details viewed:", product);
-    console.log("Reset selected quantity to:", selectedQuantity);
+   
 };
 
 

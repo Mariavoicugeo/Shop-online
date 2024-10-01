@@ -21,9 +21,102 @@ const increase=document.querySelector('.increase');
 const decrese=document.querySelector('.decrese');
 const checkoutBtn=document.querySelector(".checkout-btn");
 const cartCheckoutPage=document.getElementById("cart-checkout");
-
+const openHamburgeMenu=document.querySelector(".hamburger-menu-open");
+const  closeHamburgerMenu=document.querySelector(".close-hamburger");
+const hamburgerMenu=document.querySelector(".hamburger-menu");
+const homeLinkMenu=document.querySelector(".hambur-link-home");
+const shopLinkMenu=document.querySelector(".hambur-link-shop");
+const homeShopBreadCrumb=document.querySelector(".bread-c");
+const homeLinkCheckout=document.querySelector(".home-link");
+const linkHomefooter=document.querySelector(".home-link-footer");
+const linkShopfooter=document.querySelector(".shop-link-footer");
+const btnBuyNow=document.querySelector(".btn-buy-now");
 let selectedQuantity = 1;
 
+btnBuyNow.addEventListener("click",()=>{
+    shopPage.style.display="flex"
+    homePage.style.display="none"
+    singleProductPage.style.display='none';
+    cartCheckoutPage.style.display = "none";
+})
+
+linkHomefooter.addEventListener("click",()=>{
+    shopPage.style.display="none"
+    homePage.style.display="flex"
+    singleProductPage.style.display="none";
+    cartCheckoutPage.style.display = "none";
+    homePage.scrollIntoView({
+        behavior: "smooth", 
+          block:"start"
+    });
+})
+
+
+linkShopfooter.addEventListener("click",()=>{
+    shopPage.style.display="flex"
+    homePage.style.display="none"
+    singleProductPage.style.display="none";
+    cartCheckoutPage.style.display = "none";
+    shopPage.scrollIntoView({
+        behavior: "smooth", 
+          block:"start"
+    });
+})
+
+homeLinkCheckout.addEventListener("click",()=>{
+    shopPage.style.display="none"
+    homePage.style.display="flex"
+    singleProductPage.style.display="none";
+    cartCheckoutPage.style.display = "none";
+    homePage.scrollIntoView({
+        behavior: "smooth", 
+          block:"start"
+    });
+})
+
+homeShopBreadCrumb.addEventListener("click",()=>{
+    shopPage.style.display="none"
+    homePage.style.display="flex"
+    singleProductPage.style.display="none";
+    cartCheckoutPage.style.display = "none";
+    homePage.scrollIntoView({
+        behavior: "smooth", 
+          block:"start"
+    });
+})
+
+homeLinkMenu.addEventListener("click",()=>{
+    shopPage.style.display="none"
+    homePage.style.display="flex"
+    singleProductPage.style.display="none";
+    cartCheckoutPage.style.display = "none";
+    hamburgerMenu.classList.remove("open-menu");
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+        document.body.removeChild(overlay);
+    }
+    homePage.scrollIntoView({
+        behavior: "smooth", 
+        block: "start"      
+    });
+})
+
+
+shopLinkMenu.addEventListener("click",()=>{
+    shopPage.style.display="flex"
+    homePage.style.display="none"
+    singleProductPage.style.display="none";
+    cartCheckoutPage.style.display = "none";
+    hamburgerMenu.classList.remove("open-menu");
+    const overlay = document.getElementById('overlay');
+    if (overlay) {
+        document.body.removeChild(overlay);
+    }
+    shopPage.scrollIntoView({
+        behavior: "smooth", 
+        block: "start"      
+    });
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeCart(); 
@@ -66,12 +159,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    
+
+    openHamburgeMenu.addEventListener("click", () => {
+        hamburgerMenu.classList.add("open-menu");
+        const overlay = document.createElement('div');
+        overlay.id = 'overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = '#00000033'; 
+        overlay.style.zIndex = '2';
+        document.body.appendChild(overlay);
+    });
+    
+    closeHamburgerMenu.addEventListener("click", () => {
+        hamburgerMenu.classList.remove("open-menu");
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
+});
+
 showMore.addEventListener("click", () => {
    
     shopPage.style.display = "flex";
     homePage.style.display = "none";
     singleProductPage.style.display = "none";
-
+    cartCheckoutPage.style.display = "none";
    
     shopPage.scrollIntoView({
         behavior: "smooth", 
@@ -82,7 +201,7 @@ backHome.addEventListener("click",()=>{
     shopPage.style.display="none"
     homePage.style.display="flex"
     singleProductPage.style.display="none";
-    
+    cartCheckoutPage.style.display = "none";
     homePage.scrollIntoView({
         behavior: "smooth", 
         block: "start"      
@@ -93,7 +212,7 @@ backShop.addEventListener("click",()=>{
     shopPage.style.display="flex"
     homePage.style.display="none"
     singleProductPage.style.display="none";
-    
+    cartCheckoutPage.style.display = "none";
     shopPage.scrollIntoView({
         behavior: "smooth", 
         block: "start"      
@@ -141,11 +260,13 @@ home.addEventListener("click",()=>{
     shopPage.style.display="none"
     homePage.style.display="flex"
     singleProductPage.style.display='none';
+    cartCheckoutPage.style.display = "none";
 })
 shop.addEventListener("click",()=>{
     shopPage.style.display="flex"
     homePage.style.display="none"
     singleProductPage.style.display='none';
+    cartCheckoutPage.style.display = "none";
 })
 
 
@@ -317,7 +438,7 @@ function submitOrder() {
     const order = {
         billingDetails: formData,
         products: cartData.map(product => ({
-            name: product.name,          
+            name: product.title,          
             quantity: product.quantity,   
             price: product.price         
         })),
@@ -348,7 +469,7 @@ function submitOrder() {
     })
     .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
-        alert('There was an issue placing your order. Please try again.');
+        alert('adauga in terminal php -S localhost:8000')
     });
 }
 
@@ -374,7 +495,7 @@ function clearCart() {
 
     const subtotalDisplay = document.querySelectorAll('.subtotal-js'); 
     subtotalDisplay.forEach(Element => {
-        Element.textContent = `$0.00`; // Set to zero after clearing the cart
+        Element.textContent = `$0.00`;
     });
 }
 

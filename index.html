@@ -25,21 +25,38 @@
 <body>
   <header>
     <div id="box">
+
       <div class="logo-links">
 
+        <div class="hamburger-menu">
+          <i class="fa-solid fa-xmark close-hamburger"></i>
+          <div class="links-hamburger-menu">
+            <a href="#" class="hambur-link-home">Home</a>
+            <a href="#" class="hambur-link-shop">Shop</a>
+          </div>
+        </div>
+
         <div class="logo">
+
+          <div class="hamburger-menu-icon">
+            <i class="fa-solid fa-bars hamburger-menu-open"></i>
+          </div>
+
           <img src="./photos/Imagine WhatsApp 2024-09-21 la 19.54.52_fafc8dc1.jpg" />
           <span>Timeless Treasures</span>
         </div>
+
         <nav>
           <a href="#" aria-label="Home" class="home">Home</a>
           <a href="#" aria-label="Shop" class="shop">Shop</a>
         </nav>
+
       </div>
 
       <div id="cart-icon">
         <span class="material-symbols-outlined " id="cart-icon-btn" aria-label="Cart"> shopping_cart </span>
       </div>
+
       <div id="cart-menu">
         <div class="h1-close-icon">
           <h1>Shopping Cart</h1>
@@ -47,42 +64,32 @@
         </div>
 
         <div class="cart-list">
-         <!--   <div class="product-added">
-              <div class="item-added-photo">
-                <img src="./photos/cercei.jpeg"  alt="">
-  
-              </div>
-              <div class="detalii-add-to">
-                <h6>Title</h6>
-                <div class="price-total-per-product">
-                  <span class="quantity-added">1</span>
-                  <span class="ori"> X </span>
-                  <span class="total-price-one-p">price</span>
-                </div>
-              </div>
-              <div class="delete-product"><i class="fa-solid fa-circle-xmark"></i></div>
-            </div>-->
-            
-           </div>
-           <div class="subtotal">
+
+        </div>
+        <div class="subtotal">
+          <div class="space-evenly">
             <h4>Subtotal</h4>
             <p class="subtotal-price">0909ad9da</p>
-           </div>
+          </div>
+        </div>
 
-           <div class="checkout">
-            <button class="cart-btn">Cart</button>
-            <button class="checkout-btn">Checkout</button>
-            <button>Comparison</button>
-           </div>
+        <div class="checkout">
+          <button class="cart-btn">Cart</button>
+          <button class="checkout-btn">Checkout</button>
+          <button>Comparison</button>
+        </div>
       </div>
     </div>
-   
+
   </header>
   <main>
     <!--HOME PAGE-->
     <section id="home-page">
+
       <article class="banner-1">
+
         <div class="discover">
+
           <div class="text-new">
             <h6>New Arrival</h6>
             <h2>
@@ -93,7 +100,7 @@
               Explore exquisite designs to elevate your style. Our collection
               features timeless pieces for every occasion.
             </p>
-            <button aria-label="Buy Now More Jewelry">Buy Now</button>
+            <button aria-label="Buy Now More Jewelry" class="btn-buy-now">Buy Now</button>
           </div>
         </div>
       </article>
@@ -101,48 +108,10 @@
         <h2>Our Products</h2>
 
         <div class="p-box" id="first-box">
-          <!-- <div class="card" id="1">
-              <div class="item">
-                <img src="./photos/free-photo-of-photographing-jewelry-so-hard-but-so-rewarding.jpeg" alt="" />
-                <div class="info">
-                    <h4>Pierced Owl Rose Gold Plated Stainless Steel Double</h4>
-                    <h6>lorem ipsum </h6>
-                    <p>Rom 100000</p>
-                </div>
-              </div>
-              <div class="hover">
-                <div class="arrage-buttons">
-                    <button>Add to cart</button>
-                <div class="links-icons">
-                  <div class="hover-icon"><i class="fa-solid fa-share-nodes"></i> Share</div>
-                  <div class="hover-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i>Compare</div>
-                  <div class="hover-icon"><i class="fa-regular fa-heart"></i>Like</div>
-                </div>
-                </div>
-              </div>
-            </div>-->
+
         </div>
         <div class="p-box" id="second-box">
-          <!-- <div class="card" id="1">
-               <div class="item">
-                 <img src="./photos/free-photo-of-photographing-jewelry-so-hard-but-so-rewarding.jpeg" alt="" />
-                 <div class="info">
-                     <h4>Pierced Owl Rose Gold Plated Stainless Steel Double</h4>
-                     <h6>lorem ipsum </h6>
-                     <p>Rom 100000</p>
-                 </div>
-               </div>
-               <div class="hover">
-                 <div class="arrage-buttons">
-                     <button>Add to cart</button>
-                 <div class="links-icons">
-                   <div class="hover-icon"><i class="fa-solid fa-share-nodes"></i> Share</div>
-                   <div class="hover-icon"><i class="fa-solid fa-arrow-right-arrow-left"></i>Compare</div>
-                   <div class="hover-icon"><i class="fa-regular fa-heart"></i>Like</div>
-                 </div>
-                 </div>
-               </div>
-             </div>-->
+
         </div>
         <button class="show-more" aria-label="Show More Products">Show More</button>
       </article>
@@ -150,14 +119,18 @@
 
     <!--Shop Page-->
     <section id="shop-page">
+
       <article class="banner-2">
+
         <div class="shop-bread-crumb">
+
           <h2>Shop</h2>
           <div class="bread-c"><a href="#home-page">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>Shop</span>
           </div>
         </div>
 
       </article>
+
       <article class="display-number">
         <div class="showing-nr-p">
           <p>Showing 1-16 of 32 results</p>
@@ -183,8 +156,8 @@
 
       <article class="display-number-bread-c">
         <div>
-          <a href="#home-page" class="back-home">Home</a> <i class="fa-solid fa-chevron-right"></i> <a href="#shop-page" class="back-shop">Shop</a><i
-            class="fa-solid fa-chevron-right"></i> <span id="bread-crum">ffdsf</span>
+          <a href="#home-page" class="back-home">Home</a> <i class="fa-solid fa-chevron-right"></i> <a href="#shop-page"
+            class="back-shop">Shop</a><i class="fa-solid fa-chevron-right"></i> <span id="bread-crum">ffdsf</span>
         </div>
       </article>
       <article id="single-product">
@@ -209,7 +182,9 @@
               <div class="review"><i class="fa-solid fa-star" style="color: #FFD43B;"></i><i class="fa-solid fa-star"
                   style="color: #FFD43B;"></i><i class="fa-solid fa-star" style="color: #FFD43B;"></i><i
                   class="fa-solid fa-star" style="color: #FFD43B;"></i><i class="fa-solid fa-star"
-                  style="color: #FFD43B;"></i><span class="number-reviews"> </span><p>Customer Review</p></div>
+                  style="color: #FFD43B;"></i><span class="number-reviews"> </span>
+                <p>Customer Review</p>
+              </div>
             </div>
 
             <p class="description"></p>
@@ -235,16 +210,16 @@
 
             <div class="btns-cart">
               <div class="quantity-selector">
-             
-                  <button class="qty-btn decrese">-</button>
-                  <span class="quantityDispaly">1</span>
-                  <button class="qty-btn increase">+</button>
-               
+
+                <button class="qty-btn decrese">-</button>
+                <span class="quantityDispaly">1</span>
+                <button class="qty-btn increase">+</button>
+
               </div>
 
-             
-                <button class="add-to-cart style" data-id="${product.id}" >Add To Cart</button>
-              
+
+              <button class="add-to-cart style" data-id="${product.id}">Add To Cart</button>
+
 
             </div>
 
@@ -255,9 +230,9 @@
               <span>SS001</span>
             </div>
             <div class="jewelery">
-            <span>Category</span>
-            <span>:</span>
-            <span>Jewelry</span>
+              <span>Category</span>
+              <span>:</span>
+              <span>Jewelry</span>
             </div>
           </article>
         </section>
@@ -273,69 +248,74 @@
           </div>
         </div>
       </article>
-    <article class="information-order">
-      <aside class="form-costumer">
-        <h2>Billing details</h2>
-        <form id="contactForm" method="POST" action="index.php">
-          <div class="first-last-name">
-           <div> <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" required></div>
-          
-         <div> <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" required></div>
-          </div>
+      <article class="information-order">
+        <aside class="form-costumer">
+          <h2>Billing details</h2>
+          <form id="contactForm" method="POST" action="index.php">
+            <div class="first-last-name">
+              <div> <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
 
-          <div> <label for="address">Street address</label>
-            <input type="text" id="address" name="address" required>
-           </div>
-
-          <div>
-            <label for="town">Town / City</label>
-            <input type="text" id="town" name="town" required></div>
-      </form>
-      </aside>
-      <aside class="cart-checkout-total">
-        <article class="products-total">
-          <div class="text-product">
-            <h3>Product</h3>
-            <h3>Subtotal</h3>
-          </div>
-         <div class="cart-list-check">
-          <div class="cart-display">
-            <div class="name-quantity">
-              <h4>hakdadad</h4>
-              <span>X</span>
-              <p>1</p>
+              <div> <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
             </div>
-            <span class="price">9000$</span>          
-          </div>
-         </div>
-          <div class="subtotal-checkout">
-            <h5>Subtotal</h5>
-            <span class="subtotal-js">9000&&%$</span>
-          </div>
-          <div class="total">
-            <h5>Total</h5>
-            <span class="subtotal-js">9990492$</span>
-          </div>
-        </article>
-        <article class="order-section">
-          <div class="chas-deliver">
-            <form>
-              <label >
-                <input type="radio" name="Cash On Delivery" value="Cash On Delivery">
-                <p>Cash On Delivery</p>
-              </label>
-            </form>
 
-          </div>
-          <div class="submit-order">
-            <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <span>privacy policy</span>.</p>
-            <button class="sumbitorderbtn">Place order</button>
-          </div>
-        </article>
-      </aside>
-    </article>
+            <div> <label for="address">Street address</label>
+              <input type="text" id="address" name="address" required>
+            </div>
+
+            <div>
+              <label for="town">Town / City</label>
+              <input type="text" id="town" name="town" required>
+            </div>
+          </form>
+        </aside>
+        
+        <aside class="cart-checkout-total">
+          <article class="products-total">
+            <div class="text-product">
+              <h3>Product</h3>
+              <h3>Subtotal</h3>
+            </div>
+            <div class="cart-list-check">
+              <div class="cart-display">
+                <div class="name-quantity">
+                  <h4>hakdadad</h4>
+                  <span>X</span>
+                  <p>1</p>
+                </div>
+                <span class="price">9000$</span>
+              </div>
+            </div>
+            <div class="subtotal-checkout">
+              <h5>Subtotal</h5>
+              <span class="subtotal-js">9000&&%$</span>
+            </div>
+            <div class="total">
+              <h5>Total</h5>
+              <span class="subtotal-js">9990492$</span>
+            </div>
+          </article>
+          <article class="order-section">
+            <div class="chas-deliver">
+              <form>
+                <label>
+                  <input type="radio" name="Cash On Delivery" value="Cash On Delivery">
+                  <p>Cash On Delivery</p>
+                </label>
+              </form>
+
+            </div>
+            <div class="submit-order">
+              <p>Your personal data will be used to support your experience throughout this website, to manage access to
+                your account, and for other purposes described in our <span>privacy policy</span>.</p>
+              <button class="sumbitorderbtn">Place order</button>
+            </div>
+          </article>
+        </aside>
+      </article>
     </section>
   </main>
 
@@ -350,10 +330,10 @@
         <div id="links">
           <h3>Links</h3>
           <ul>
-            <li><a href=#>Home</a></li>
-            <li><a href=#>Shop</a></li>
-            <li><a href=#>About</a></li>
-            <li><a href=#>Contact</a></li>
+            <li><a href="#" class="home-link-footer">Home</a></li>
+            <li><a href="#" class="shop-link-footer">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
         <div id="help">

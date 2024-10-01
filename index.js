@@ -417,8 +417,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         submitOrder();
     });
-
-    // Initially fetch and render the cart
     fetchAndRenderCart();
 });
 
@@ -469,11 +467,10 @@ function submitOrder() {
         return response.json();
     })
     .then(data => {
-        // Clear the cart after successful order submission
+        
         localStorage.removeItem('cart');
         clearCart(); 
-        // Optionally re-fetch and render the cart if needed
-        // fetchAndRenderCart();
+  
     })
     .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
@@ -503,8 +500,6 @@ function clearCart() {
     while (cartDisplay.firstChild) {
         cartDisplay.removeChild(cartDisplay.firstChild);
     }
-
-    // Clear form inputs
     document.querySelector('.form-costumer #firstName').value = '';
     document.querySelector('.form-costumer #lastName').value = '';
     document.querySelector('.form-costumer #address').value = '';
@@ -687,10 +682,10 @@ function updateProductImage(productId, newImageUrl,title) {
         }
     })
     .then(res => res.json())
-    .then(json => console.log(`Updated product ${productId} image:`, json))
+    .then()
     .catch(err => console.error(`Error updating product ${productId}:`, err));
 }
 
 renderCart(cartProduse);
 fetchJewelery();
-console.log("Adauga asta in terminal pentru a prelua comanda cu php -S localhost:8000")
+

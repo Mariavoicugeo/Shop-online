@@ -412,43 +412,50 @@ function addToCart(produs) {
 
 //AICI POSTAREA COMENZII
 document.addEventListener('DOMContentLoaded', () => {
-    
     const submitOrderBtn = document.querySelector(".sumbitorderbtn");
     submitOrderBtn.addEventListener('click', (event) => {
         event.preventDefault();
         submitOrder();
     });
+
+    // Initially fetch and render the cart
+    fetchAndRenderCart();
 });
 
-
 function submitOrder() {
-
     const formData = {
         firstName: document.querySelector('.form-costumer #firstName').value,
         lastName: document.querySelector('.form-costumer #lastName').value,
         address: document.querySelector('.form-costumer #address').value,
         town: document.querySelector('.form-costumer #town').value,
-        paymentMethod: document.querySelector('input[name="Cash On Delivery"]:checked') ? "Cash On Delivery" : "Other"
+        paymentMethod: document.querySelector('input[name="paymentMethod"]:checked') 
+            ? "Cash On Delivery" 
+            : "Other"
     };
 
-  
-    const cartData = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartItems = Array.from(document.querySelectorAll('.cart-display')).map(item => {
+        return {
+            id: item.dataset.id, 
+            title: item.querySelector('h4').textContent,
+            price: parseFloat(item.querySelector('.price').textContent.replace('$', '')) / parseFloat(item.querySelector('p').textContent),
+            quantity: parseInt(item.querySelector('p').textContent)
+        };
+    });
 
- 
     const order = {
         billingDetails: formData,
-        products: cartData.map(product => ({
-            name: product.title,          
-            quantity: product.quantity,   
-            price: product.price         
+        products: cartItems.map(product => ({
+            id: product.id,
+            name: product.title,
+            quantity: product.quantity,
+            price: product.price
         })),
-        totalAmount: calculateTotal2(cartData) 
+        totalAmount: calculateTotal2(cartItems) 
     };
 
     console.log("Order Data:", order);
 
-   
-    fetch('http://localhost:8000/index.php', {
+    fetch('https://fakestoreapi.com/carts', { 
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -462,35 +469,47 @@ function submitOrder() {
         return response.json();
     })
     .then(data => {
-        console.log('Order successful:', data);
-        
+        // Clear the cart after successful order submission
         localStorage.removeItem('cart');
-        clearCart();
+        clearCart(); 
+        // Optionally re-fetch and render the cart if needed
+        // fetchAndRenderCart();
     })
     .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
-       
     });
 }
 
+const fetchAndRenderCart = async () => {
+    try {
+        const response = await fetch('https://fakestoreapi.com/carts/user/2'); 
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const cartData = await response.json(); 
+        const cartItems = cartData[0].products; 
+        renderCartCheckout(cartItems); 
+    } catch (error) {
+        console.error("Error fetching cart:", error);
+    }
+};
 
 function calculateTotal2(cartData) {
     return cartData.reduce((total, product) => total + (product.price * product.quantity), 0);
 }
 
 function clearCart() {
-  
     const cartDisplay = document.querySelector('.cart-list-check');
     while (cartDisplay.firstChild) {
         cartDisplay.removeChild(cartDisplay.firstChild);
     }
 
+    // Clear form inputs
     document.querySelector('.form-costumer #firstName').value = '';
     document.querySelector('.form-costumer #lastName').value = '';
     document.querySelector('.form-costumer #address').value = '';
     document.querySelector('.form-costumer #town').value = '';
 
-  
     localStorage.removeItem('cart');
 
     const subtotalDisplay = document.querySelectorAll('.subtotal-js'); 
@@ -498,18 +517,6 @@ function clearCart() {
         Element.textContent = `$0.00`;
     });
 }
-
-
-function calculateTotal2(cartData) {
-    return cartData.reduce((total, product) => total + (product.price * product.quantity), 0);
-}
-
-
-document.querySelector('.sumbitorderbtn').addEventListener('click', (event) => {
-    event.preventDefault(); 
-    submitOrder(); 
-});
-
 
 
 

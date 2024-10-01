@@ -469,7 +469,7 @@ function submitOrder() {
     })
     .catch((error) => {
         console.error('There was a problem with the fetch operation:', error);
-        alert('adauga in terminal php -S localhost:8000')
+       
     });
 }
 
@@ -686,4 +686,4 @@ function updateProductImage(productId, newImageUrl,title) {
 
 renderCart(cartProduse);
 fetchJewelery();
-
+console.log("Adauga asta in terminal pentru a prelua comanda cu php -S localhost:8000")

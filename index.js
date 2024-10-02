@@ -336,6 +336,7 @@ const renderCart = () => {
         cartItemsContainer.appendChild(productCart);
        
     });
+    
     const totalAmount = calculateTotal(); 
     const subtotalDisplay = document.querySelector('.subtotal-price'); 
     subtotalDisplay.textContent = `$${totalAmount}`;
@@ -472,7 +473,9 @@ function submitOrder() {
     .then(data => {
         
         localStorage.removeItem('cart');
+        cartProduse=[];
         clearCart(); 
+        renderCart();
   
     })
     .catch((error) => {

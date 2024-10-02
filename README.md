@@ -1,2 +1,2 @@
-# E-comm
+# SHOP ONLINE
  Shop online - Final Project

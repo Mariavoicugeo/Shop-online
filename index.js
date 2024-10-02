@@ -57,11 +57,14 @@ linkShopfooter.addEventListener("click",()=>{
     homePage.style.display="none"
     singleProductPage.style.display="none";
     cartCheckoutPage.style.display = "none";
-    shopPage.scrollIntoView({
-        behavior: "smooth", 
-          block:"start"
-    });
-})
+    setTimeout(() => {
+        shopPage.scrollIntoView({
+            behavior: "smooth",
+            block: "flex"
+        });
+    },200); 
+});
+
 
 homeLinkCheckout.addEventListener("click",()=>{
     shopPage.style.display="none"
